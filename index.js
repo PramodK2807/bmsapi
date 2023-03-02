@@ -3,6 +3,7 @@ const app = express()
 const cors = require('cors')
 const dotenv = require('dotenv')
 const JWT = require('jsonwebtoken')
+let bodyParser = require('body-parser');
 
 dotenv.config()
 const port = process.env.PORT || 4500
@@ -16,8 +17,9 @@ const User = require('./models/User')
 const Category = require('./models/Category')
 
 
-app.use(cors());
-app.use(express.json());
+app.use(cors())
+app.use(bodyParser.urlencoded({extended:true}))
+app.use(express.json())
 
 
 // SIGN UP OR REGISTER APi
